@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(schema = "public", name = "ingredient")
 public class IngredientEntity {
@@ -20,38 +21,4 @@ public class IngredientEntity {
 
     @Column(name = "calories")
     private Short calories;
-
-    public IngredientEntity() {
-    }
-
-    public IngredientEntity(Long id, String title, Short calories) {
-
-        this.id = id;
-        this.title = title;
-        this.calories = calories;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Short getCalories() {
-        return calories;
-    }
-
-    public void setCalories(Short calories) {
-        this.calories = calories;
-    }
 }

@@ -2,18 +2,15 @@ package com.selqet.momrecipebook.mapper;
 
 import com.selqet.momrecipebook.entity.IngredientEntity;
 import com.selqet.momrecipebook.model.IngredientDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.mapstruct.*;
 
-@Mapper(componentModel = "spring")
-public interface IngredientEntityMapper {
-    @Mapping(source = "id", target = "id")
-    @Mapping(source = "title", target = "title")
-    @Mapping(source = "calories", target = "calories")
+@Mapper(componentModel = "spring",
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+        nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
+public interface IngredientMapper {
     IngredientEntity toEntity(IngredientDto ingredient);
 
-    @Mapping(source = "id", target = "id")
-    @Mapping(source = "title", target = "title")
-    @Mapping(source = "calories", target = "calories")
+    IngredientEntity toEntity(IngredientDto ingredientDto, @MappingTarget IngredientEntity ingredientEntity);
+
     IngredientDto toDto(IngredientEntity ingredient);
 }
